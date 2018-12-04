@@ -1,6 +1,7 @@
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
+import GithubIcon from '../images/GithubIcon';
 
 const Header = ({ siteTitle }) => (
   <header
@@ -27,6 +28,19 @@ const Header = ({ siteTitle }) => (
         >
           {siteTitle}
         </Link>
+        <a
+          target="_blank"
+          href="https://github.com/deammer/cms-comparator"
+          rel="noreferrer noopener"
+          style={{ color: '#caccff', float: 'right', textDecoration: 'none' }}
+        >
+          Contribute{' '}
+          <GithubIcon
+            style={{ verticalAlign: 'top', display: 'inline-block' }}
+            fill="#caccff"
+            width={24}
+          />
+        </a>
       </div>
     </div>
   </header>
