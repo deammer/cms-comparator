@@ -2,8 +2,8 @@ import React from 'react';
 
 const GithubIcon = ({ width, height, fill, style }) => (
   <svg
-    width={width || 50}
-    height={height || 'auto'}
+    width={width || '100%'}
+    height={height || '100%'}
     viewBox="0 0 256 249"
     xmlns="http://www.w3.org/2000/svg"
     preserveAspectRatio="xMinYMin meet"
