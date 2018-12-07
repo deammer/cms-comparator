@@ -577,6 +577,7 @@ th {
   padding-right: 0.96667rem;
   padding-top: 0.725rem;
   padding-bottom: calc(0.725rem - 1px);
+  white-space: nowrap;
 }
 tt,
 code {

@@ -33,7 +33,14 @@ const Card = ({
           marginBottom: 10,
         }}
       >
-        {Name}{' '}
+        <a
+          href={Website}
+          rel="noopener noreferrer"
+          target="_blank"
+          style={{ textDecoration: 'none', color: '#706ce8' }}
+        >
+          {Name}
+        </a>{' '}
         <small
           style={{
             display: 'inline-block',
@@ -55,16 +62,6 @@ const Card = ({
           style={{ width: 'auto', height: 40 }}
         />
       )}
-      <p>
-        <a
-          href={Website}
-          rel="noopener noreferrer"
-          target="_blank"
-          style={{ textDecoration: 'none', color: '#706ce8' }}
-        >
-          🖥 Website
-        </a>
-      </p>
     </div>
     <div
       style={{
@@ -85,12 +82,13 @@ const Card = ({
           ))}
         </div>
       )}
+      <h4 style={{ marginBottom: 10 }}>Features</h4>
       <div>
-        <b>Tables support: </b>
+        <b>Tables: </b>
         {Table_support}
       </div>
       <div>
-        <b>Markdown support:</b>
+        <b>Markdown:</b>
         {Markdown_support ? ' Yes' : ' No'}
       </div>
       <div>

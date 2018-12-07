@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Layout from '../components/Layout';
 import { graphql } from 'gatsby';
 import Card from '../components/Card';
+import Table from '../components/Table';
 
 const VIEW_LIST = 'List view';
 const VIEW_TABLE = 'Table view';
@@ -17,11 +18,18 @@ class IndexPage extends Component {
 
     return (
       <Layout>
-        <h1>List view</h1>
-        <div style={{ marginBottom: 15 }}>
+        <div style={{ margin: '15px auto', textAlign: 'center' }}>
           <button
             disabled={view === VIEW_LIST}
-            style={{ opacity: view === VIEW_LIST ? 0.25 : 1 }}
+            style={{
+              opacity: view === VIEW_LIST ? 0.25 : 1,
+              background: '#2C2B59',
+              color: '#fff',
+              border: 0,
+              cursor: 'pointer',
+              padding: '5px 15px',
+              borderRadius: '20px 0 0 20px',
+            }}
             onClick={() => {
               this.setState({ view: VIEW_LIST });
             }}
@@ -30,7 +38,15 @@ class IndexPage extends Component {
           </button>
           <button
             disabled={view === VIEW_TABLE}
-            style={{ opacity: view === VIEW_TABLE ? 0.25 : 1 }}
+            style={{
+              opacity: view === VIEW_TABLE ? 0.25 : 1,
+              background: '#2C2B59',
+              color: '#fff',
+              border: 0,
+              cursor: 'pointer',
+              padding: '5px 15px',
+              borderRadius: '0 20px 20px 0',
+            }}
             onClick={() => {
               this.setState({ view: VIEW_TABLE });
             }}
@@ -39,54 +55,22 @@ class IndexPage extends Component {
           </button>
         </div>
         <main>
-          {view === VIEW_LIST &&
-            allAirtable.edges.map(x => (
-              <Card key={x.node.id} {...x.node.data} />
-            ))}
-          {view === VIEW_TABLE && (
+          {view === VIEW_LIST && (
             <div
               style={{
-                boxShadow:
-                  '0 18px 35px 0 rgba(63, 63, 122, 0.1), 0 5px 15px 0 rgba(58, 50, 140, 0.07)',
-                borderRadius: 4,
-                background: 'white',
-                marginBottom: 15,
+                margin: '0 auto',
+                maxWidth: 960,
+                padding: '0px 1.0875rem 1.45rem',
+                paddingTop: 0,
               }}
             >
-              <table>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Approach</th>
-                    <th>Website</th>
-                    <th>Markdown</th>
-                    <th>Tables</th>
-                    <th>Self-hosted</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {allAirtable.edges.map(x => (
-                    <tr key={x.node.id}>
-                      <td>{x.node.data.Name}</td>
-                      <td>{x.node.data.Type}</td>
-                      <td>
-                        <a
-                          href={x.node.data.Website}
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          style={{ textDecoration: 'none', color: '#706ce8' }}
-                        >
-                          Visit
-                        </a>
-                      </td>
-                      <td>{x.node.data.Markdown_support ? '✅' : '❌'}</td>
-                      <td>{x.node.data.Table_support}</td>
-                      <td>{x.node.data.Self_hosted ? '✅' : '❌'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {allAirtable.edges.map(x => (
+                <Card key={x.node.id} {...x.node.data} />
+              ))}
             </div>
+          )}
+          {view === VIEW_TABLE && (
+            <Table nodes={allAirtable.edges.map(x => x.node)} />
           )}
         </main>
       </Layout>
@@ -98,7 +82,10 @@ export default IndexPage;
 
 export const indexQuery = graphql`
   {
-    allAirtable(filter: { table: { eq: "Comparison" } }) {
+    allAirtable(
+      filter: { table: { eq: "Comparison" } }
+      sort: { order: ASC, fields: data___Name }
+    ) {
       edges {
         node {
           id
@@ -111,6 +98,8 @@ export const indexQuery = graphql`
             Markdown_support
             Table_support
             Self_hosted
+            Import
+            Environments
             Logo {
               url
             }
