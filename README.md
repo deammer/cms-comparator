@@ -4,6 +4,10 @@
 
 Use this [informational website](https://cms-comparator.netlify.com) to choose the best CMS for your project!
 
+## TODO
+
+[ ] Add github stars to the open-source solutions
+
 ## 🤔 How does this work?
 
 This website is powered by Gatsby, Netlify, and Airtable.
