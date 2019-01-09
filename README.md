@@ -6,7 +6,7 @@ Use this [informational website](https://cms-comparator.netlify.com) to choose t
 
 ## TODO
 
-[ ] Add github stars to the open-source solutions
+- [ ] Add github stars to the open-source solutions
 
 ## 🤔 How does this work?
 
