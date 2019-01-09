@@ -7,6 +7,7 @@ Use this [informational website](https://cms-comparator.netlify.com) to choose t
 ## TODO
 
 - [ ] Add github stars to the open-source solutions
+- [ ] Add [Ghost](https://ghost.org/) to the list
 
 ## 🤔 How does this work?
 
